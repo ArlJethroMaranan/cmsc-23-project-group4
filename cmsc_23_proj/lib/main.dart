@@ -1,5 +1,6 @@
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoList.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_home.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/org_profile.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,9 +30,13 @@ class MyApp extends StatelessWidget {
         if(setting.name == '/'){ // route for slambook (originally the first route *but changed)
           return MaterialPageRoute(builder: (context) => const OrgHome());
         }
-        else if(setting.name == '/second'){ // route for friends page which has a map parameter that will be from formpage
+        else if(setting.name == '/donationListOrg'){ // route for friends page which has a map parameter that will be from formpage
           //var args = setting.arguments as Map<String,String>? ?? {};
           return MaterialPageRoute(builder: (context) => const DonationList());
+        }
+        else if(setting.name == '/profileOrg'){ // route for friends page which has a map parameter that will be from formpage
+          //var args = setting.arguments as Map<String,String>? ?? {};
+          return MaterialPageRoute(builder: (context) => const ProfileOrg());
         }
         // else{ //extra route for error page
         //   return MaterialPageRoute(builder: (context) => const ErrorPage());
