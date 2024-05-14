@@ -11,6 +11,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: const Color.fromARGB(255, 232, 130, 57),
       child: ListView(
         children: [
           const DrawerHeader(child: Text('Organization')),

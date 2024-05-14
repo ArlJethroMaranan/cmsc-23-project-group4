@@ -14,9 +14,9 @@ class _ProfileOrgState extends State<ProfileOrg> {
     return Scaffold(
       drawer: const DrawerWidget(),
       appBar: AppBar(
-      title: const Text("PROFILE"),
-      backgroundColor: Colors.blue, // Background color
-      foregroundColor: Colors.white, // Text and icon color
+        title: const Text("PROFILE"),
+        backgroundColor: Colors.blue, // Background color
+        foregroundColor: Colors.white, // Text and icon color
       ),
     );
   }
