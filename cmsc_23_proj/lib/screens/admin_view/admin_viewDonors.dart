@@ -16,11 +16,16 @@ class _ViewDonorsPageState extends State<ViewDonorsPage> {
     return ListView.builder(
       itemCount: donorList.length,
       itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(donorList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
+        return Card(
+          color: Color.fromARGB(255, 232, 139, 57),
+          child: ExpansionTile(
+            title: Text(donorList[index]),
+            backgroundColor: Colors.orangeAccent,
+            children: [
+              Text("donor details")
+            ],
           // onTap: ,
+          )
         );
       })
     );
@@ -44,7 +49,8 @@ class _ViewDonorsPageState extends State<ViewDonorsPage> {
                   fontWeight: FontWeight.bold
                 ),
               ),
-              Expanded(child: donorListView())
+              Expanded(
+                child: donorListView())
             ],
           ),
         )

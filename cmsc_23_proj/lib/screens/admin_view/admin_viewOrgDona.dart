@@ -18,32 +18,52 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
     "donation 1"
   ];
 
-  Widget orgListView(){
-    return ListView.builder(
-      itemCount: orgList.length,
-      itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(orgList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
-          // onTap: ,
-        );
-      })
-    );
-  }
 
   Widget donationListView(){
     return ListView.builder(
       itemCount: donationList.length,
       itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(donationList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
+        return ExpansionTile(
+          title: Text(donationList[index], 
+            style: TextStyle(color: Colors.white),
+          ),
+          collapsedBackgroundColor: Color.fromARGB(255, 232, 139, 57),
+          backgroundColor: Color.fromARGB(255, 232, 139, 57),
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text("donation details")
+            )
+          ]
         );
       })
     );
   }
+
+  Widget orgListView(){
+    return ListView.builder(
+      itemCount: orgList.length,
+      itemBuilder: ((context, index) {
+        return Card(
+          color: Color.fromARGB(255, 232, 139, 57),
+          child: ExpansionTile(
+            title: Text(orgList[index], 
+              style: TextStyle(color: Colors.white),
+            ),
+            collapsedBackgroundColor: Color.fromARGB(255, 232, 139, 57),
+            backgroundColor: Color.fromARGB(255, 232, 139, 57),
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: donationListView()
+              )
+            ]
+          )
+        );  
+      })
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {

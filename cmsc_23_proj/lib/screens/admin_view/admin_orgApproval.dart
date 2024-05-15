@@ -16,16 +16,22 @@ class _OrgApprovalPageState extends State<OrgApprovalPage> {
     return ListView.builder(
       itemCount: orgList.length,
       itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(orgList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
-          trailing: IconButton(
-            icon: Icon(Icons.check),
-            onPressed: (){},
-          ),
+        return Card(
+          color: Color.fromARGB(255, 232, 139, 57),
+          child: ExpansionTile(
+            title: Text(orgList[index]),
+            backgroundColor: Colors.orangeAccent,
+            trailing: IconButton(
+              icon: Icon(Icons.check),
+              onPressed: (){},
+            ),
+            children: [
+              Text("org details")
+            ],
           // onTap: ,
+          )
         );
+        
       })
     );
   }

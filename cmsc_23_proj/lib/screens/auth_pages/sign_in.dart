@@ -97,13 +97,13 @@ class _UserSignInState extends State<UserSignIn> {
                   onPressed: () {
                     Navigator.pushNamed(context, '/admin-main');
                   },
-                  child: const Text("Sign up"),
+                  child: const Text("Admin"),
                 ),
                 OutlinedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/orgs-main');
                   },
-                  child: const Text("Sign up"),
+                  child: const Text("Orgs"),
                 ),
               ],
             ),
