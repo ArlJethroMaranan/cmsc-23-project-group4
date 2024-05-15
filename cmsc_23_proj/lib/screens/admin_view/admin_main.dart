@@ -24,11 +24,11 @@ class _AdminMainState extends State<AdminMain> {
       onGenerateRoute: (setting){
         if(setting.name == '/'){
           return MaterialPageRoute(builder: (context) => AdminHomePage());
-        }else if(setting.name == 'ViewDonorsPage'){
+        }else if(setting.name == '/ViewDonorsPage'){
           return MaterialPageRoute(builder: (context) => ViewDonorsPage());
-        }else if(setting.name == 'ViewOrgsDonaPage'){
+        }else if(setting.name == '/ViewOrgsDonaPage'){
           return MaterialPageRoute(builder: (context) => ViewOrgsDonaPage());
-        }else if(setting.name == 'OrgApprovalPage'){
+        }else if(setting.name == '/OrgApprovalPage'){
           return MaterialPageRoute(builder: (context) => OrgApprovalPage());
         }
       },

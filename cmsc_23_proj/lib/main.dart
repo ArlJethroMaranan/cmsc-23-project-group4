@@ -1,3 +1,4 @@
+import 'package:cmsc_23_proj/screens/admin_view/admin_main.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Text("Hello world"),
+      onGenerateRoute: (setting) {
+        if (setting.name == '/'){
+          return MaterialPageRoute(builder: (context) => AdminMain());
+        }
+      },
     );
   }
 }
