@@ -2,6 +2,7 @@ import 'package:cmsc_23_proj/screens/auth_pages/sign_in.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/sign_up/sign_up_main.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/sign_up/sign_up_org.dart';
 import 'package:cmsc_23_proj/screens/not_found.dart';
+import 'package:cmsc_23_proj/screens/users_view/donors_view/donors_main.dart';
 import 'package:flutter/material.dart';
 
 class AuthMain extends StatefulWidget {
@@ -27,8 +28,9 @@ class _AuthMainState extends State<AuthMain> {
           return MaterialPageRoute(builder: (context) => const UserSignUp());
         } else if (settings.name == '/sign-up-org'){
           return MaterialPageRoute(builder: (context) => const UserSignUpOrg());
-        }  
-        else {
+        } else if (settings.name == '/donors-main'){
+          return MaterialPageRoute(builder: (context) => const DonorsMain());
+        } else {
           return MaterialPageRoute(builder: (context) => const NotFound());
         }
       },

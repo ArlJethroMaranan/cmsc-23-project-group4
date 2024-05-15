@@ -9,7 +9,9 @@ class UserSignIn extends StatefulWidget {
 
 class _UserSignInState extends State<UserSignIn> {
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
   String nameInput = "";
+  String passInput = "";
 
   // @override
   // void dispose() {
@@ -61,11 +63,11 @@ class _UserSignInState extends State<UserSignIn> {
             Container(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: TextFormField(
-                validator: (nameInput) {
-                  if (nameInput == "") return "Password required";
+                validator: (passInput) {
+                  if (passInput == "") return "Password required";
                   return null;
                 },
-                controller: nameController,
+                controller: passController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.all(10),
@@ -75,21 +77,23 @@ class _UserSignInState extends State<UserSignIn> {
             ),
             const Padding(padding: EdgeInsets.only(top: 10)),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/donors-main');
+              },
               child: const Text('Sign in'),
             ),
             const Padding(padding: EdgeInsets.only(top: 30)),
             const Text("Don't have an account?"),
             const Padding(padding: EdgeInsets.only(top: 5)),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/sign-up');
+              },
               child: const Text("Sign up"),
             ),
           ],
         ),
       )
-      
-      
     );
   }
 }
