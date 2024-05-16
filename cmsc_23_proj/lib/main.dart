@@ -1,3 +1,4 @@
+import 'package:cmsc_23_proj/screens/auth_pages/auth_main.dart';
 import 'package:cmsc_23_proj/screens/admin_view/admin_main.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoList.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_home.dart';
@@ -26,8 +27,10 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.grey[800],
         ),
       ),
-      onGenerateRoute: (setting) {
-        if (setting.name == '/'){
+      onGenerateRoute: (settings) {
+        if (settings.name == '/'){
+          return MaterialPageRoute(builder: (context) => const AuthMain());
+        } else if (setting.name == '/adminMain'){
           return MaterialPageRoute(builder: (context) => AdminMain());
         } else if(setting.name == '/orgHome'){ // route for slambook (originally the first route *but changed)
           return MaterialPageRoute(builder: (context) => const OrgHome());
