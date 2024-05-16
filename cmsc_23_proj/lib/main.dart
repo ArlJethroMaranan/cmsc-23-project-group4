@@ -1,3 +1,4 @@
+import 'package:cmsc_23_proj/screens/admin_view/admin_main.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoList.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_home.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_profile.dart';
@@ -25,9 +26,13 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.grey[800],
         ),
       ),
+      onGenerateRoute: (setting) {
+        if (setting.name == '/'){
+          return MaterialPageRoute(builder: (context) => AdminMain());
+        }
       //original route
       onGenerateRoute: (setting) {
-        if(setting.name == '/'){ // route for slambook (originally the first route *but changed)
+        if(setting.name == '/orgHome'){ // route for slambook (originally the first route *but changed)
           return MaterialPageRoute(builder: (context) => const OrgHome());
         }
         else if(setting.name == '/donationListOrg'){ // route for friends page which has a map parameter that will be from formpage
