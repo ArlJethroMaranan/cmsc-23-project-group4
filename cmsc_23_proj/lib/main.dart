@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         if (settings.name == '/'){
           return MaterialPageRoute(builder: (context) => const AuthMain());
         }
+        return null;
       },
     );
   }

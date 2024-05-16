@@ -10,6 +10,6 @@ class UserSignUpOrg extends StatefulWidget {
 class _UserSignUpOrgState extends State<UserSignUpOrg> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Text("Sign up as org");
   }
 }
