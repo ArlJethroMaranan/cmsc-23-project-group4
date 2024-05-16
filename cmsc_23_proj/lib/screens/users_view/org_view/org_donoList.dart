@@ -60,6 +60,15 @@ class _DonationListState extends State<DonationList> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Image.asset(
+                    "assets/donation2.png",
+                    width: 400, 
+                    height: 250, 
+                    fit: BoxFit.cover,
+                  ),
+                )
               ],
             ),
           );

@@ -36,6 +36,13 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             },
             title: const Text('Donation List'),
           ),
+          ListTile(
+            onTap: () {
+              Navigator.pop(context); // pop current
+              Navigator.pushNamed(context, '/driveOrg'); // push new route
+            },
+            title: const Text('Donation Drives'),
+          ),
         ],
       ),
     );

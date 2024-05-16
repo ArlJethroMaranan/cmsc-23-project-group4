@@ -2,6 +2,15 @@
 
 This is branch of marcus
 
+
+- git merge origin main (para ma merge ko yung nasa main to my branch)
+
+
+
+# to use phone
+1) saksak then swipe down to notification (gawin transfer files)
+2) use ctr lx2 then do flutter run -v
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
