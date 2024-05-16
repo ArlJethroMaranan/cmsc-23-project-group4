@@ -29,17 +29,12 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (setting) {
         if (setting.name == '/'){
           return MaterialPageRoute(builder: (context) => AdminMain());
-        }
-      //original route
-      onGenerateRoute: (setting) {
-        if(setting.name == '/orgHome'){ // route for slambook (originally the first route *but changed)
+        } else if(setting.name == '/orgHome'){ // route for slambook (originally the first route *but changed)
           return MaterialPageRoute(builder: (context) => const OrgHome());
-        }
-        else if(setting.name == '/donationListOrg'){ // route for friends page which has a map parameter that will be from formpage
+        } else if(setting.name == '/donationListOrg'){ // route for friends page which has a map parameter that will be from formpage
           //var args = setting.arguments as Map<String,String>? ?? {};
           return MaterialPageRoute(builder: (context) => const DonationList());
-        }
-        else if(setting.name == '/profileOrg'){ // route for friends page which has a map parameter that will be from formpage
+        } else if(setting.name == '/profileOrg'){ // route for friends page which has a map parameter that will be from formpage
           //var args = setting.arguments as Map<String,String>? ?? {};
           return MaterialPageRoute(builder: (context) => const ProfileOrg());
         }
