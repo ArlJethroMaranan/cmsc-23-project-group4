@@ -93,6 +93,18 @@ class _UserSignInState extends State<UserSignIn> {
                   },
                   child: const Text("Sign up"),
                 ),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/admin-main');
+                  },
+                  child: const Text("Sign up"),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/orgs-main');
+                  },
+                  child: const Text("Sign up"),
+                ),
               ],
             ),
           ),
