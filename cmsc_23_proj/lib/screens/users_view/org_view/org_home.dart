@@ -24,7 +24,7 @@ class _OrgHomeState extends State<OrgHome> {
         children: [
           // Background
            Positioned(
-            top: -15, 
+            top: -50, 
             left: 0, 
             child: Image.asset(
               "assets/donation2.png",

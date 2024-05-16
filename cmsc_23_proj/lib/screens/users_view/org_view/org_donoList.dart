@@ -35,7 +35,7 @@ class _DonationListState extends State<DonationList> {
             child: ExpansionTile(
               backgroundColor: Color.fromARGB(255, 219, 110, 32),
               title: Text(
-                donation[0],
+                donation[0], // name
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -43,7 +43,7 @@ class _DonationListState extends State<DonationList> {
                 ),
               ),
               subtitle: Text(
-                "Current Amount Raised: ${donation[1]}",
+                "Current Amount Raised: ${donation[1]}", // amount
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -53,7 +53,7 @@ class _DonationListState extends State<DonationList> {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Text(
-                    donation[2],
+                    donation[2], // description
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
