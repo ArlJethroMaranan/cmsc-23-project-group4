@@ -1,9 +1,5 @@
 import 'package:cmsc_23_proj/screens/auth_pages/auth_main.dart';
-import 'package:cmsc_23_proj/screens/admin_view/admin_main.dart';
 import 'package:cmsc_23_proj/screens/not_found.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoList.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/org_home.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/org_profile.dart';
 import 'package:flutter/material.dart';
 
 
