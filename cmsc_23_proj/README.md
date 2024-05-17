@@ -6,6 +6,14 @@ This is branch of marcus
 - git merge origin main (para ma merge ko yung nasa main to my branch)
 
 
+# code progress
+- added buttons for organization page (not final)
+- added routes(drawer,button) and design for home org page
+- added demo design for donolist
+- fixed UI on phone to do portability
+- added radio widget to donation status in donation list
+
+
 
 # to use phone
 1) saksak then swipe down to notification (gawin transfer files)

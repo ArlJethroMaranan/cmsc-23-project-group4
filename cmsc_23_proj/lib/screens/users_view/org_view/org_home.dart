@@ -30,10 +30,10 @@ class _OrgHomeState extends State<OrgHome> {
           Flexible(
             child: Container(
               // width: 400, 
-              height: 400, 
-              decoration: BoxDecoration(
+              height: 500, 
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 229, 239, 95),
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
