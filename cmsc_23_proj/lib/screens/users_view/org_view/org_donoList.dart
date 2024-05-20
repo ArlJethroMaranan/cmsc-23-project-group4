@@ -178,37 +178,40 @@ class _DonationListState extends State<DonationList> {
                     //     fit: BoxFit.cover,
                     //   ),
                     // ),
-                    // Created Radios for the donation status
-                    // const Padding(
-                    //   padding: EdgeInsets.all(16),
-                    //   child: Text(
-                    //     "Donation Status", // description
-                    //     style: TextStyle( 
-                    //       color: Colors.white,
-                    //       fontSize: 16,
-                    //     ),
-                    //   ),
-                    // ),
-                    // Column(
-                    //   children: donoStatus.map((status) => ListTile( // convert each string status in donoStatus to list tile
-                    //     title: Text(
-                    //       status,
-                    //       style: const TextStyle( 
-                    //         color: Colors.white,
-                    //         fontSize: 16,
-                    //       ),
-                    //     ),
-                    //     leading: Radio<String>(
-                    //       value: status,
-                    //       groupValue: donation["status"], // points to currently picked
-                    //       onChanged: (value) {
-                    //         setState(() {
-                    //           donation["status"] = value!; 
-                    //         });
-                    //       },
-                    //     ),
-                    //   )).toList(), // change the iterable returned by .map to list again so that it can be accepted by column
-                    // ),
+                    //Created Radios for the donation status
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        "Donation Status", // description
+                        style: TextStyle( 
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: donoStatus.map((status) { // convert each donostatus string to a list tile (used .map to access each individual strings in the donostatus list)
+                        return ListTile( // use list tile to add leading with radio
+                          title: Text(
+                            status,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                          leading: Radio<String>(
+                            value: status,
+                            groupValue: temp.status, // points to currently picked
+                            onChanged: (value) {
+                              setState(() {
+                                temp.status = value!; // change the value 
+                                FirebaseFirestore.instance.collection('donations').doc(snapshot.data!.docs[index].id).update({'status': value}); // access the instance of the donations document using it's id then updating the status with the new value
+                              });
+                            },
+                          ),
+                        );
+                      }).toList(), // convert toList since column can't accept iterable 
+                    ),
                   ],
                 ),
               );
