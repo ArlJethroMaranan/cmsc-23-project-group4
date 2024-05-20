@@ -36,7 +36,7 @@ class DonationOrg {
       receiveType: json['receiveType'],
       schedule: json['schedule'],
       weight: json['weight'],
-      status: json['status'] ?? 'Pending',
+      status: json['status'] ?? 'Pending', 
     );
   }
 

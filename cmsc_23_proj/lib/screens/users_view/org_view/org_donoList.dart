@@ -64,7 +64,7 @@ class _DonationListState extends State<DonationList> {
                 child: ExpansionTile(
                   backgroundColor: const Color.fromARGB(255, 219, 110, 32),
                   title: Text(
-                    temp.address1!, // name
+                    "address1 : ${temp.address1!}", // name
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -82,7 +82,7 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        temp.address1!, // description
+                        "address1 : ${temp.address1!}", // description
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -92,7 +92,7 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        temp.address2!, // description
+                        "address2 : ${temp.address2!}", // description
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -102,7 +102,7 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        '${temp.contactNum}', // description
+                        'contact : ${temp.contactNum}', // description
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -112,7 +112,7 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        temp.donationType!, // description
+                        'donation type : ${temp.donationType!}', // description
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -132,8 +132,18 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        temp.receiveType? "Pickup":"drop-off", // description
+                        'TypeOfService : ${temp.receiveType? "Pickup":"drop-off"}', // description
                         style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        'TimeforService : ', // description
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                         ),
@@ -152,17 +162,7 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        temp.photo!, // description
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Text(
-                        '${temp.weight}', // description
+                        'WeightOfDonation : ${temp.weight}', // description
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
