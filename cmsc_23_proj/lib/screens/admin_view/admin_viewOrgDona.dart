@@ -15,7 +15,11 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
   ];
 
   List<String> donationList = [
-    "donation 1"
+    "donation 1",
+    "donation 2",
+    "donation 3",
+    "donation 4",
+    "donation 5"
   ];
 
 
@@ -23,18 +27,17 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
     return ListView.builder(
       itemCount: donationList.length,
       itemBuilder: ((context, index) {
-        return ExpansionTile(
-          title: Text(donationList[index], 
-            style: TextStyle(color: Colors.white),
+        return ListTile(
+          title: Text(donationList[index]),
+          titleTextStyle: TextStyle(color: Colors.white),
+          subtitle: Text("donation info"),
+          trailing: OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 229, 239, 95)
+            ),
+            onPressed: (){},
+            child: Text("More Info"),
           ),
-          collapsedBackgroundColor: Color.fromARGB(255, 232, 139, 57),
-          backgroundColor: Color.fromARGB(255, 232, 139, 57),
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text("donation details")
-            )
-          ]
         );
       })
     );
@@ -47,15 +50,28 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
         return Card(
           color: Color.fromARGB(255, 232, 139, 57),
           child: ExpansionTile(
-            title: Text(orgList[index], 
-              style: TextStyle(color: Colors.white),
+            title: Row(children: [
+            Container(
+              padding: const EdgeInsets.all(5.0),
+              margin: const EdgeInsets.all(5.0),
+              width: MediaQuery.of(context).size.width / 7,
+              height: MediaQuery.of(context).size.width / 7,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(300.0),
+                child: Image.asset('./assets/orgLogo1.jpg', fit: BoxFit.cover,),
+              ),
             ),
+            Text(orgList[index], style: const TextStyle(color: Colors.white),),
+          ],),
             collapsedBackgroundColor: Color.fromARGB(255, 232, 139, 57),
-            backgroundColor: Color.fromARGB(255, 232, 139, 57),
+            backgroundColor: Colors.orangeAccent,
             children: [
               Padding(
                 padding: const EdgeInsets.all(16),
-                child: donationListView()
+                child: SizedBox(
+                  height: 220,
+                  child: donationListView(),
+            )
               )
             ]
           )

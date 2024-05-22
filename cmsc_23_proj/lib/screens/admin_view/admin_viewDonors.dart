@@ -19,12 +19,23 @@ class _ViewDonorsPageState extends State<ViewDonorsPage> {
         return Card(
           color: Color.fromARGB(255, 232, 139, 57),
           child: ExpansionTile(
-            title: Text(donorList[index]),
+            title: 
+              Text(donorList[index]),
+            collapsedBackgroundColor: const Color.fromARGB(255, 232, 130, 57),
             backgroundColor: Colors.orangeAccent,
             children: [
-              Text("donor details")
-            ],
-          // onTap: ,
+              const Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text("donor info donor info donor info donor info donor info donor info donor info donor info donor info ")
+              ),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 229, 239, 95)
+                ),
+                onPressed: (){},
+                child: Text("More Info"),
+              ),
+            ]
           )
         );
       })

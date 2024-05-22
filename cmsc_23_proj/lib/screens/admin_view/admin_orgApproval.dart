@@ -21,12 +21,30 @@ class _OrgApprovalPageState extends State<OrgApprovalPage> {
           child: ExpansionTile(
             title: Text(orgList[index]),
             backgroundColor: Colors.orangeAccent,
-            trailing: IconButton(
-              icon: Icon(Icons.check),
-              onPressed: (){},
-            ),
             children: [
-              Text("org details")
+              const Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text("org details org details org details org details org details org details org details"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [ 
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 229, 239, 95)
+                    ),
+                    onPressed: (){},
+                    child: Text("More Info"),
+                  ),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 229, 239, 95)
+                    ),
+                    onPressed: (){},
+                    child: Text("Approve"),
+                  ),
+                ],
+              )
             ],
           // onTap: ,
           )
