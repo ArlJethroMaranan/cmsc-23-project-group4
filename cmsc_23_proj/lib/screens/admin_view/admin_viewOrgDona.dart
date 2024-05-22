@@ -22,27 +22,6 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
     "donation 5"
   ];
 
-
-  Widget donationListView(){
-    return ListView.builder(
-      itemCount: donationList.length,
-      itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(donationList[index]),
-          titleTextStyle: TextStyle(color: Colors.white),
-          subtitle: Text("donation info"),
-          trailing: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 229, 239, 95)
-            ),
-            onPressed: (){},
-            child: Text("More Info"),
-          ),
-        );
-      })
-    );
-  }
-
   Widget orgListView(){
     return ListView.builder(
       itemCount: orgList.length,
@@ -68,10 +47,21 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16),
-                child: SizedBox(
-                  height: 220,
-                  child: donationListView(),
-            )
+                child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Text("About the organization")),
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Text("Status for Donations: ")
+                      ),
+                      SizedBox(
+                        height: 220,
+                        child: donationListView()
+                      )
+                    ],
+                  ),
               )
             ]
           )
@@ -80,6 +70,100 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
     );
   }
 
+  Widget donationListView(){
+    return ListView.builder(
+      itemCount: donationList.length,
+      itemBuilder: ((context, index) {
+        return ListTile(
+          title: Text(donationList[index]),
+          titleTextStyle: TextStyle(color: Colors.white),
+          subtitle: Text("donation info"),
+          trailing: OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 229, 239, 95)
+            ),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute<Widget>(builder: (BuildContext context) {
+                return Expanded(child: donationDetails(donationList[index])); }));
+            },
+            child: Text("More Info"),
+          ),
+        );
+      })
+    );
+  }
+
+  Widget donationDetails(donation){
+    return Scaffold(
+      appBar: AppBar(title: Text("${donation}")),
+      body: Container(
+        padding: EdgeInsets.all(17),
+        child: Column(
+          children: [
+            // const Text("Summary", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Text("status"),
+            ),
+            const Column(
+              children: [
+                  Row(
+                    children: [ 
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Column(
+                          children: [
+                            Text("donation items categories"),
+                            Text("donation items weight")
+                          ],
+                        )
+                      ),
+                      Image(
+                        image: AssetImage("./assets/donation.png"),
+                        height: 100,
+                        width: 100,
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [ 
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Text("for pickup/dropoff")),
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Text("pickup/dropoff location")
+                      )
+                    ],
+                  ),
+                  //if for pickup
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text("addresses")
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text("contact no")
+                  ),
+                ],
+              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  child: Text("Back")
+                )
+              ]
+            )
+          ]
+        ),
+      )
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
