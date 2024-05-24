@@ -133,3 +133,42 @@ class Organization {
     };
   }
 }
+
+class Donor {
+  // initialize data fields
+  String name;
+  String username;
+  String address1;
+  String contactNum;
+
+  Donor({
+    required this.name,
+    required this.username,
+    required this.address1,
+    required this.contactNum
+  });
+
+  // Factory constructor to instantiate object from json format
+  factory Donor.fromJson(Map<String, dynamic> json) {
+    return Donor(
+      name: json['name'],
+      username: json['username'],
+      address1: json['address1'],
+      contactNum: json['contactNum'],
+    );
+  }
+
+  static List<Donor> fromJsonArray(String jsonData) {
+    final Iterable<dynamic> data = jsonDecode(jsonData);
+    return data.map<Donor>((dynamic d) => Donor.fromJson(d)).toList();
+  }
+
+  Map<String, dynamic> toJson(Donor donor) {
+    return {
+      'name': donor.name,
+      'username': donor.username,
+      'address1': donor.address1,
+      'contactNum': contactNum
+    };
+  }
+}

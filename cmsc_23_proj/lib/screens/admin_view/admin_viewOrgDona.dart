@@ -1,4 +1,5 @@
 import 'package:cmsc_23_proj/screens/admin_view/admin_ViewOrgDona_Donation.dart';
+import 'package:cmsc_23_proj/screens/admin_view/admin_ViewOrgDona_Organization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -15,63 +16,6 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
     "EXO"
   ];
 
-  List<String> donationList = [
-    "donation 1",
-    "donation 2",
-    "donation 3",
-    "donation 4",
-    "donation 5"
-  ];
-
-  Widget orgListView(){
-    return ListView.builder(
-      itemCount: orgList.length,
-      itemBuilder: ((context, index) {
-        return Card(
-          color: Color.fromARGB(255, 232, 139, 57),
-          child: ExpansionTile(
-            title: Row(children: [
-            Container(
-              padding: const EdgeInsets.all(5.0),
-              margin: const EdgeInsets.all(5.0),
-              width: MediaQuery.of(context).size.width / 7,
-              height: MediaQuery.of(context).size.width / 7,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(300.0),
-                child: Image.asset('./assets/orgLogo1.jpg', fit: BoxFit.cover,),
-              ),
-            ),
-            Text(orgList[index], style: const TextStyle(color: Colors.white),),
-          ],),
-            collapsedBackgroundColor: Color.fromARGB(255, 232, 139, 57),
-            backgroundColor: Colors.orangeAccent,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(16),
-                        child: Text("About the organization")),
-                      Padding(
-                        padding: EdgeInsets.all(16),
-                        child: Text("Status for Donations: ")
-                      ),
-                      SizedBox(
-                        height: 220,
-                        child: DonationListView()
-                      )
-                    ],
-                  ),
-              )
-            ]
-          )
-        );  
-      })
-    );
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +24,7 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
       ),
       body: Container(
         margin: const EdgeInsets.all(18),
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -90,7 +34,7 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
                   fontWeight: FontWeight.bold
                 ),
               ),
-              Expanded(child: orgListView())
+              Expanded(child: OrganizationListView())
             ],
           ),
         )

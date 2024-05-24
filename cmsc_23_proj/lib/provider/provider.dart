@@ -58,3 +58,22 @@ class OrgsForApprovalListProvider with ChangeNotifier {
   }
 
 }
+
+class DonorsListProvider with ChangeNotifier {
+
+  late FirebaseDonorsAPI firebaseService;
+  late Stream<QuerySnapshot> _donorsStream;
+
+  DonorsListProvider() {
+    firebaseService = FirebaseDonorsAPI();
+    fetchDonors();
+  }
+
+  Stream<QuerySnapshot> get donors => _donorsStream;
+
+  fetchDonors() { // to get the data from database
+    _donorsStream = firebaseService.getAllDonors();
+    notifyListeners();
+  }
+
+}

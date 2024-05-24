@@ -26,3 +26,12 @@ class FirebaseOrgsForApprovalAPI {
   }
 
 }
+
+class FirebaseDonorsAPI {
+  static final FirebaseFirestore db = FirebaseFirestore.instance;
+
+  Stream<QuerySnapshot> getAllDonors() {
+    return db.collection("donors").snapshots();
+  }
+
+}

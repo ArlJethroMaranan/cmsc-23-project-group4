@@ -68,10 +68,12 @@ class _DonationListViewState extends State<DonationListView> {
             // const Text("Summary", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             Padding(
               padding: EdgeInsets.all(16),
-              child: Row(children: [
-                Text("Status: "),
-                Text("${donation.status}")
-              ],),
+              child: Row(
+                children: [
+                  Text("Status: "),
+                  Text("${donation.status}")
+                ],
+              ),
             ),
             Column(
               children: [
