@@ -1,5 +1,7 @@
 import 'package:cmsc_23_proj/screens/not_found.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/donoDriveAdd.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoDrive.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoDrivePage.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoList.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_home.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_profile.dart';
@@ -32,6 +34,10 @@ class _OrgMainState extends State<OrgMain> {
           return MaterialPageRoute(builder: (context) => const ProfileOrg());
         } else if(settings.name == '/driveOrg') {
           return MaterialPageRoute(builder: (context) => const DonationDrive());
+        } else if(settings.name == '/driveOrgDet') {
+          return MaterialPageRoute(builder: (context) => const DonoDriveDetails());
+        } else if(settings.name == '/driveOrgAdd') {
+          return MaterialPageRoute(builder: (context) => const AddDonationDrive()); 
         } else {
           return MaterialPageRoute(builder: (context) => const NotFound());
         }

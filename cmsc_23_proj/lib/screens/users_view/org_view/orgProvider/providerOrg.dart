@@ -1,5 +1,6 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:cmsc_23_proj/screens/users_view/org_view/orgAPI/firebase_donation_api.dart";
+import "package:cmsc_23_proj/screens/users_view/org_view/orgModel/donationOrgModel.dart";
 // import "package:cmsc_23_proj/screens/users_view/org_view/orgModel/donationOrgModel.dart";
 import "package:flutter/material.dart";
 // import "package:route_friends/model/todoModel.dart";
@@ -22,4 +23,8 @@ class DonationOrgListProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void editStatus(String index, DonationOrg data) async { // to edit status for donation
+    await firebaseService.editStatus(index,data);
+    notifyListeners();
+  }
 }

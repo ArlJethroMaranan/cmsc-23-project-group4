@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'cmsc-23-project-group-04.appspot.com',
     measurementId: 'G-QC6DEJ5CQT',
   );
+
 }

@@ -1,6 +1,7 @@
 import 'package:cmsc_23_proj/firebase_options.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/auth_main.dart';
 import 'package:cmsc_23_proj/screens/not_found.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerOrg.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: ((context) => DonationOrgListProvider())),
+        ChangeNotifierProvider(create: ((context) => DonationDriveOrgListProvider()))
       ],
       child: const MyApp(),
     ),

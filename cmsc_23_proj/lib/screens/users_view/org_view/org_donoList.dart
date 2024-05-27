@@ -132,7 +132,7 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        'TypeOfService : ${temp.receiveType? "Pickup":"drop-off"}', // description
+                        'TypeOfService : ${temp.receiveType!? "Pickup":"drop-off"}', // description
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -152,7 +152,7 @@ class _DonationListState extends State<DonationList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        DateTime.fromMicrosecondsSinceEpoch(temp.schedule.microsecondsSinceEpoch).toString(), // description
+                        DateTime.fromMicrosecondsSinceEpoch(temp.schedule!.microsecondsSinceEpoch).toString(), // description
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -205,7 +205,13 @@ class _DonationListState extends State<DonationList> {
                             onChanged: (value) {
                               setState(() {
                                 temp.status = value!; // change the value 
-                                FirebaseFirestore.instance.collection('donations').doc(snapshot.data!.docs[index].id).update({'status': value}); // access the instance of the donations document using it's id then updating the status with the new value
+                                // FirebaseFirestore.instance.collection('donations').doc(snapshot.data!.docs[index].id).update({'status': value}); // access the instance of the donations document using it's id then updating the status with the new value
+                                
+                                DonationOrg data = DonationOrg( // access status to a variable data from model
+                                  status: temp.status,
+                                );
+                                
+                                context.read<DonationOrgListProvider>().editStatus(snapshot.data!.docs[index].id, data); // call edit status to change the status
                               });
                             },
                           ),

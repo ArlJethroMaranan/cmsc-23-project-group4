@@ -5,23 +5,23 @@ class DonationOrg {
   // initialize data fields
   String? address1;
   String? address2;
-  int contactNum;
+  int? contactNum;
   String? donationType;
   String? photo;
-  bool receiveType;
-  Timestamp schedule;
-  int weight;
+  bool? receiveType;
+  Timestamp? schedule;
+  int? weight;
   String status;
 
   DonationOrg({
-    required this.address1,
-    required this.address2,
-    required this.contactNum,
-    required this.donationType,
-    required this.photo,
-    required this.receiveType,
-    required this.schedule,
-    required this.weight,
+    this.address1,
+    this.address2,
+    this.contactNum,
+    this.donationType,
+    this.photo,
+    this.receiveType,
+    this.schedule,
+    this.weight,
     this.status = "Pending"
   });
 

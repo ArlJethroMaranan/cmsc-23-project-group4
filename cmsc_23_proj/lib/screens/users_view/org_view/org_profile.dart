@@ -38,9 +38,11 @@ class _ProfileOrgState extends State<ProfileOrg> {
                 const SizedBox(height: 30),
                 Container(
                   height: 390,
+                  width: 370,
                   decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 232, 130, 57),
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+                  // borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
                   ),
                   child: const Column (
                     children: [
