@@ -16,7 +16,7 @@ class _DonoDriveDetailsState extends State<DonoDriveDetails> {
   @override
   Widget build(BuildContext context) {
 
-    DonationDriveOrg donationDriveOrg = context.watch<DonationDriveOrgListProvider>().selectedDrive;
+    DonationDriveOrg donationDriveOrg = context.watch<DonationDriveOrgListProvider>().selectedDrive; // since we changed the selected drive to the drive the user has chosen before going to this page, we can now access the specific details by watching the selected drive
 
     return Scaffold(
       drawer: const DrawerWidget(),
@@ -25,41 +25,39 @@ class _DonoDriveDetailsState extends State<DonoDriveDetails> {
         backgroundColor: Color.fromARGB(255, 232, 130, 57), // Background color
         foregroundColor: Colors.white, // Text and icon color
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Text(donationDriveOrg.name!),
-              ],
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
+      body: Padding(
+              padding: const EdgeInsets.all(16),
+              child: 
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    Center(
+                      child: Text(donationDriveOrg.name!, style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
+                    ),
+
+                    const SizedBox(height: 15,),
+                    
+                    Text(donationDriveOrg.description!, style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+
+                    const SizedBox(height: 15,),
+
+                    Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 214, 126, 62),
+                          borderRadius: BorderRadius.circular(50), 
+                        ),
+                        clipBehavior: Clip.antiAlias, // clip overflow of image of the container
+                        child: Image.asset(
+                                'assets/donation2.png',
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
             ),
-          ],
-        ),
-      ),
-    );
+        );
   }
 }
-
-
-//       backgroundColor: const Color.fromARGB(255, 229, 239, 95),
-//       body: StreamBuilder(
-//         stream: donationOrgStream,
-//         builder: (context, snapshot) { // snapshot cases 
-//           if (snapshot.hasError){
-//             return Center(child: Text("Error encountered! ${snapshot.error}"));
-//           } else if (snapshot.connectionState == ConnectionState.waiting){
-//             return Center (child: CircularProgressIndicator(),);
-//           } else if (!snapshot.hasData){
-//             return Center(child: Text("No Donations Found"));
-//           }
-
-//           DonationOrg temp = DonationOrg.fromJson(snapshot.data!.docs[index].data() as Map<String,dynamic>);
-
-//           return Container(
-//               // store to temp the data from snapshot
-//               // DonationOrg temp = DonationOrg.fromJson(snapshot.data!.docs[index].data() as Map<String,dynamic>);
-
-            
-//           );
-//         }
-//       ),

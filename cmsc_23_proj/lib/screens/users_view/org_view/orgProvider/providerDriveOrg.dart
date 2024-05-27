@@ -12,7 +12,7 @@ class DonationDriveOrgListProvider with ChangeNotifier {
 
   late FirebaseDonoDriveOrgAPI firebaseService;
   late Stream<QuerySnapshot> _donationDriveOrgStream;
-  DonationDriveOrg? _selectedDrive;
+  DonationDriveOrg? _selectedDrive; // create instance of drive org called selected drive
 
   DonationDriveOrgListProvider() {
     firebaseService = FirebaseDonoDriveOrgAPI();
@@ -20,10 +20,10 @@ class DonationDriveOrgListProvider with ChangeNotifier {
   }
 
   Stream<QuerySnapshot> get donationDriveOrg => _donationDriveOrgStream;
-  DonationDriveOrg get selectedDrive => _selectedDrive!;
+  DonationDriveOrg get selectedDrive => _selectedDrive!; // create getter method
 
   updateSelectedDrive(DonationDriveOrg donationDriveOrg){
-    _selectedDrive = donationDriveOrg;
+    _selectedDrive = donationDriveOrg; // set donodrive org as current selected drive
     notifyListeners();
   }
 

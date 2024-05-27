@@ -84,7 +84,8 @@ class _DonationDriveState extends State<DonationDrive> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("${temp.name}",style: const TextStyle(fontSize: 20)),
-                              Text("${temp.description}")
+                              // Text("${temp.description}")
+                              Text(temp.description!.length>15 ? temp.description!.substring(0,15): "${temp.description}", style: const TextStyle(fontSize: 20)), // make sure that it shows only up to 15 length so that it does not overflow
                             ],
                           ),
                         ),
@@ -97,7 +98,7 @@ class _DonationDriveState extends State<DonationDrive> {
                                 width: 70,
                                 child: FloatingActionButton.extended(
                                         onPressed: () async {
-                                          context.read<DonationDriveOrgListProvider>().updateSelectedDrive(temp);
+                                          context.read<DonationDriveOrgListProvider>().updateSelectedDrive(temp); // pass donation drive(temp) to update selected drive
                                           await Navigator.pushNamed(context, '/driveOrgDet');
                                         },
                                         backgroundColor: const Color.fromARGB(255, 229, 239, 95), // Background color 
