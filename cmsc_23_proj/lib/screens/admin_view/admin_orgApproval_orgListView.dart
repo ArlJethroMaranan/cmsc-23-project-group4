@@ -31,6 +31,8 @@ class _OrgForApprovalListViewState extends State<OrgForApprovalListView> {
             itemBuilder: ((context, index) {
               OrgForApproval temp = OrgForApproval.fromJson(snapshot.data!.docs[index].data() as Map<String,dynamic>);
 
+              temp.id = snapshot.data?.docs[index].id;
+
               return Card(
                 color: Color.fromARGB(255, 232, 139, 57),
                 child: ExpansionTile(
@@ -48,10 +50,79 @@ class _OrgForApprovalListViewState extends State<OrgForApprovalListView> {
                           style: OutlinedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(255, 229, 239, 95)
                           ),
-                          onPressed: (){},
+                          onPressed: (){
+                            Stream<QuerySnapshot> orgList = context.read<OrganizationsListProvider>().organization;
+
+                            Organization approvedOrg = Organization(
+                              name: temp.name, 
+                              about: temp.about, 
+                              status: "closed"
+                            );
+
+                            context.read<OrganizationsListProvider>().addOrganization(approvedOrg);
+                            
+                            showDialog<String>(
+                              context: context, 
+                              builder: (BuildContext context) => (
+                                Dialog(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("Organization: ${temp.name} approved!"),
+                                        TextButton(
+                                          onPressed: (){
+                                            Navigator.pop(context);
+                                          }, child: const Text('Close'),
+                                        )
+                                      ],
+                                    )
+                                  )
+                                )
+                              )
+                            );
+                            
+                            context.read<OrgsForApprovalListProvider>().deleteOrgForApproval(temp.id!);
+                          },
                           child: Text("Approve"),
                         ),
                         OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 229, 239, 95)
+                          ),
+                          onPressed: (){
+                            showDialog<String>(
+                              context: context, 
+                              builder: (BuildContext context) => (
+                                Dialog(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("Organization: ${temp.name} disapproved!"),
+                                        TextButton(
+                                          onPressed: (){
+                                            Navigator.pop(context);
+                                          }, child: const Text('Close'),
+                                        )
+                                      ],
+                                    )
+                                  )
+                                )
+                              )
+                            );
+
+                            context.read<OrgsForApprovalListProvider>().deleteOrgForApproval(temp.id!);
+                          },
+                          child: Text("Disapprove"),
+                        ),
+                      ],
+                    ),
+                    OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(255, 229, 239, 95)
                           ),
@@ -61,8 +132,6 @@ class _OrgForApprovalListViewState extends State<OrgForApprovalListView> {
                           },
                           child: Text("More Info"),
                         ),
-                      ],
-                    )
                   ],
                 )
               );

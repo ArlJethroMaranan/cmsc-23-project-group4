@@ -66,11 +66,13 @@ class Donation {
 
 class OrgForApproval {
   // initialize data fields
+  String? id;
   String name;
   String about;
   String proof;
 
   OrgForApproval({
+    this.id,
     required this.name,
     required this.about,
     required this.proof
@@ -79,6 +81,7 @@ class OrgForApproval {
   // Factory constructor to instantiate object from json format
   factory OrgForApproval.fromJson(Map<String, dynamic> json) {
     return OrgForApproval(
+      id: json['id'],
       name: json['name'],
       about: json['about'],
       proof: json['proof'], 
