@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/drawer.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/orgModel/driveOrgModel.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DonoDriveDetails extends StatefulWidget {
   const DonoDriveDetails({super.key});
@@ -11,12 +15,26 @@ class DonoDriveDetails extends StatefulWidget {
 class _DonoDriveDetailsState extends State<DonoDriveDetails> {
   @override
   Widget build(BuildContext context) {
+
+    DonationDriveOrg donationDriveOrg = context.watch<DonationDriveOrgListProvider>().selectedDrive;
+
     return Scaffold(
       drawer: const DrawerWidget(),
       appBar: AppBar(
         title: const Text("DONATION DRIVE DETAILS"),
         backgroundColor: Color.fromARGB(255, 232, 130, 57), // Background color
         foregroundColor: Colors.white, // Text and icon color
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(donationDriveOrg.name!),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

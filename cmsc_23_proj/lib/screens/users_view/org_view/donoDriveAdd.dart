@@ -35,7 +35,9 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
               DonationDriveOrg temp = DonationDriveOrg(
                 name: name!,
                 description: description!,
-                photo: photo!
+                photo: photo,
+                //orgID: context.watch<>().userID(),
+                orgID: 'En3NVkFvaL905dJ8ii8c'
               );
 
               context.read<DonationDriveOrgListProvider>().addDrive(temp);

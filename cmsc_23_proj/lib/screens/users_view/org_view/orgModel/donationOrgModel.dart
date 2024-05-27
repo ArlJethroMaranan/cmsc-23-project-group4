@@ -12,6 +12,7 @@ class DonationOrg {
   Timestamp? schedule;
   int? weight;
   String status;
+  
 
   DonationOrg({
     this.address1,
@@ -22,7 +23,7 @@ class DonationOrg {
     this.receiveType,
     this.schedule,
     this.weight,
-    this.status = "Pending"
+    this.status = "Pending",
   });
 
   // Factory constructor to instantiate object from json format
@@ -55,7 +56,7 @@ class DonationOrg {
       'receiveType': donationOrg.receiveType,
       'schedule': donationOrg.schedule,
       'weight': donationOrg.weight,
-      'status': donationOrg.status
+      'status': donationOrg.status,
     };
   }
 }

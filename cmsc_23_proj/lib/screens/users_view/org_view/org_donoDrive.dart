@@ -97,6 +97,7 @@ class _DonationDriveState extends State<DonationDrive> {
                                 width: 70,
                                 child: FloatingActionButton.extended(
                                         onPressed: () async {
+                                          context.read<DonationDriveOrgListProvider>().updateSelectedDrive(temp);
                                           await Navigator.pushNamed(context, '/driveOrgDet');
                                         },
                                         backgroundColor: const Color.fromARGB(255, 229, 239, 95), // Background color 
