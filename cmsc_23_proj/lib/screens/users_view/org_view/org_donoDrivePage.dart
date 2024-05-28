@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/EditDonationDrive.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/drawer.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgModel/driveOrgModel.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
@@ -54,6 +55,40 @@ class _DonoDriveDetailsState extends State<DonoDriveDetails> {
                                 'assets/donation2.png',
                               ),
                       ),
+                    ),
+
+                    const SizedBox(height: 15,),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () async {
+                                await context.read<DonationDriveOrgListProvider>().deleteDrive(donationDriveOrg.id!);
+                                print("deleted");
+                                Navigator.pop(context);
+                          
+                              }
+                              , child: const Text('Delete Drive')
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(width: 15,),
+
+                        Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => EditDonationDrive(drive : donationDriveOrg))); // pass the donationDriveOrg to edit donation since we need the id for editing
+                              }, 
+                              child: const Text('Edit Drive'),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),

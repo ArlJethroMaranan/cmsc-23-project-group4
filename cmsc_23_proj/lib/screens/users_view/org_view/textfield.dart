@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class TextFieldState extends StatefulWidget {
   final dynamic hintText; //to accept string to widget
   final dynamic label;
-  final Function(String) addToValuesList;
+  final TextEditingController controller;
 
   const TextFieldState({
     Key? key,
     required this.hintText,
     required this.label,
-    required this.addToValuesList,
+    required this.controller // call in controller
   });
 
   @override
@@ -34,17 +35,12 @@ class _TextFieldStateState extends State<TextFieldState> {
               }
               return null;
             },
-            onChanged: (value) {
-              setState(() {
-                inputValue = value;
-                widget.addToValuesList(value); 
-              });
-            },
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
               hintText: widget.hintText,
               labelText: widget.label,
             ),
+            controller: widget.controller
           ),
           const SizedBox(height: 20),
         ],

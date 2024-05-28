@@ -28,7 +28,7 @@ class DonationDriveOrgListProvider with ChangeNotifier {
   }
 
   fetchDonationDriveOrg() { // to get the data from database
-    _donationDriveOrgStream = firebaseService.getAllDonationOrg();
+    _donationDriveOrgStream = firebaseService.getAllDonationDriveOrg();
     notifyListeners();
   }
 
@@ -36,6 +36,18 @@ class DonationDriveOrgListProvider with ChangeNotifier {
     String message = await firebaseService.addDrive(item.toJson(item));
     print(message);
     notifyListeners();
+  }
+
+  void editDrive(String index, DonationDriveOrg data) async {
+    await firebaseService.editDrive(index, data);
+    notifyListeners();
+  }
+
+  Future<String> deleteDrive(String id) async {
+    await firebaseService.deleteDrive(id);
+
+    notifyListeners();
+    return "Deleted";
   }
 
 }

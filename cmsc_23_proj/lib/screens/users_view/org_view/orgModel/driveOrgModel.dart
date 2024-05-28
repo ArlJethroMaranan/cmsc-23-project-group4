@@ -7,12 +7,14 @@ class DonationDriveOrg {
   String? description;
   String? photo;
   String? orgID;
+  String? id; // add id to hold the id of the donation drive in firebase
 
   DonationDriveOrg({
     this.name,
     this.description,
     this.photo,
-    this.orgID
+    this.orgID,
+    this.id
   });
 
   // Factory constructor to instantiate object from json format
@@ -21,7 +23,8 @@ class DonationDriveOrg {
       name: json['Name'],
       description: json['Description'],
       photo: json['Photo'],
-      orgID: json['orgID']
+      orgID: json['orgID'],
+      id: json['id']
     );
   }
 
@@ -35,7 +38,8 @@ class DonationDriveOrg {
       'Name': donationDriveOrg.name,
       'Description': donationDriveOrg.description,
       'Photo': donationDriveOrg.photo,
-      'orgID': donationDriveOrg.orgID
+      'orgID': donationDriveOrg.orgID,
+      'id': donationDriveOrg.id
     };
   }
 }

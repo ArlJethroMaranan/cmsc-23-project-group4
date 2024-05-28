@@ -40,8 +40,13 @@ class _DonationDriveState extends State<DonationDrive> {
           return ListView.builder(
             itemCount: snapshot.data!.docs.length, // length based on donation list
             itemBuilder: (context, index) {
+              
+              Map<String,dynamic> docMap = snapshot.data!.docs[index].data() as Map<String, dynamic>; // store to docMap the data from firebase
+
+              docMap['id'] = snapshot.data!.docs[index].id; // store to id in model the id from snapshot (will be used for editing)
+              
               // store to temp the data from snapshot
-              DonationDriveOrg temp = DonationDriveOrg.fromJson(snapshot.data!.docs[index].data() as Map<String, dynamic>);
+              DonationDriveOrg temp = DonationDriveOrg.fromJson(docMap);
 
               // final donation = donations[index];
               return Padding(

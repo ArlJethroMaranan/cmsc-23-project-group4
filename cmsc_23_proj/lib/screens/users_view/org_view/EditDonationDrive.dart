@@ -1,18 +1,22 @@
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgModel/driveOrgModel.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/textfield.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
-class AddDonationDrive extends StatefulWidget {
-  const AddDonationDrive({super.key});
+class EditDonationDrive extends StatefulWidget {
+  const EditDonationDrive({super.key,required this.drive});
+
+  final DonationDriveOrg drive; // call final drive so I can access the values in the drive
 
   @override
-  State<AddDonationDrive> createState() => _AddDonationDriveState();
+  State<EditDonationDrive> createState() => _EditDonationDriveState();
 }
 
-class _AddDonationDriveState extends State<AddDonationDrive> {
-
+class _EditDonationDriveState extends State<EditDonationDrive> {
+  
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void validateAnswers() { //contains summary and checker if formkey is valid
@@ -40,9 +44,11 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
                 orgID: 'En3NVkFvaL905dJ8ii8c'
               );
 
-              context.read<DonationDriveOrgListProvider>().addDrive(temp);
+              context.read<DonationDriveOrgListProvider>().editDrive(widget.drive.id!,temp); // call id from drive and temp holding the values to edit
 
               Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              
       }
 
     }
@@ -56,13 +62,21 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
 
   String summaryText = '';
   bool showSummary = false;
-  
+
+  @override
+  void initState() { // set initial state to the old infos when editing
+    super.initState();
+      nameController = TextEditingController(text: widget.drive.name!);
+      descriptionController = TextEditingController(text: widget.drive.description!);
+      photoController = TextEditingController(text: widget.drive.photo!); 
+  }
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
     backgroundColor: Color.fromARGB(255, 229, 239, 95),
     appBar: AppBar(
-      title: const Text("ADD DONATION DRIVE"),
+      title: const Text("EDIT DONATION DRIVE"),
       backgroundColor: Color.fromARGB(255, 232, 130, 57), // Background color
       foregroundColor: Colors.white, // Text and icon color
     ),
@@ -73,7 +87,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
           child: Column(
             children: [
               const Text( //show text for title 
-                "What Donation Drive would you like to create?",
+                "Edit the drive.",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
           
@@ -83,6 +97,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
                 hintText: "Enter the name of Drive.",
                 label: "Name",
                 controller: nameController,
+                
                 
               ), // textfield for name
           
