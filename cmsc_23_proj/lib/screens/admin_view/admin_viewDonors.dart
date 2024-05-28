@@ -14,10 +14,13 @@ class _ViewDonorsPageState extends State<ViewDonorsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("View All Donors"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         margin: const EdgeInsets.all(18),
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

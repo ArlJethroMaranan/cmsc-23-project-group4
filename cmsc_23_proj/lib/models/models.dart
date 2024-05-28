@@ -104,22 +104,28 @@ class OrgForApproval {
 
 class Organization {
   // initialize data fields
+  String orgID;
   String name;
   String about;
   String status;
+  String photo;
 
   Organization({
+    required this.orgID,
     required this.name,
     required this.about,
-    required this.status
+    required this.status,
+    required this.photo,
   });
 
   // Factory constructor to instantiate object from json format
   factory Organization.fromJson(Map<String, dynamic> json) {
     return Organization(
+      orgID: json['orgID'],
       name: json['name'],
       about: json['about'],
-      status: json['status'], 
+      status: json['status'],
+      photo: json['photo']
     );
   }
 
@@ -130,9 +136,11 @@ class Organization {
 
   Map<String, dynamic> toJson(Organization organization) {
     return {
+      'orgID': organization.orgID,
       'name': organization.name,
       'about': organization.about,
-      'status': organization.status
+      'status': organization.status,
+      'photo': organization.photo
     };
   }
 }

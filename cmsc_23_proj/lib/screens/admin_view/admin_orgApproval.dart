@@ -9,9 +9,9 @@ class OrgApprovalPage extends StatefulWidget {
 }
 
 class _OrgApprovalPageState extends State<OrgApprovalPage> {
-  List<String> orgList = [
-    "Going Rangers"
-  ];
+  // List<String> orgList = [
+  //   "Going Rangers"
+  // ];
   
 
   @override
@@ -19,7 +19,10 @@ class _OrgApprovalPageState extends State<OrgApprovalPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Organizations for Approval"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         margin: const EdgeInsets.all(18),
         child: Center(

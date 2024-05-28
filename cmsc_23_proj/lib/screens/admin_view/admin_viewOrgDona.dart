@@ -11,17 +11,20 @@ class ViewOrgsDonaPage extends StatefulWidget {
 }
 
 class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
-  List<String> orgList = [
-    "Seventeen",
-    "EXO"
-  ];
+  // List<String> orgList = [
+  //   "Seventeen",
+  //   "EXO"
+  // ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("View All Organizations and Donations"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         margin: const EdgeInsets.all(18),
         child: const Center(

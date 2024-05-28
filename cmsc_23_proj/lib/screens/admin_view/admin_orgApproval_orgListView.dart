@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cmsc_23_proj/models/models.dart';
 import 'package:cmsc_23_proj/provider/provider.dart';
+import 'package:cmsc_23_proj/screens/imageConversion.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -50,13 +53,15 @@ class _OrgForApprovalListViewState extends State<OrgForApprovalListView> {
                           style: OutlinedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(255, 229, 239, 95)
                           ),
-                          onPressed: (){
+                          onPressed: () async {
                             Stream<QuerySnapshot> orgList = context.read<OrganizationsListProvider>().organization;
-
+                            
                             Organization approvedOrg = Organization(
+                              orgID: temp.id!,
                               name: temp.name, 
-                              about: temp.about, 
-                              status: "closed"
+                              about: temp.about,
+                              status: "closed",
+                              photo: convertedPhoto
                             );
 
                             context.read<OrganizationsListProvider>().addOrganization(approvedOrg);
@@ -143,12 +148,16 @@ class _OrgForApprovalListViewState extends State<OrgForApprovalListView> {
 
   Widget orgDetails(organization){
     return Scaffold(
-      appBar: AppBar(title: Text("${organization.name}")),
+      appBar: AppBar(
+        title: Text("${organization.name}"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
+      ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         padding: EdgeInsets.all(17),
         child: Column(
           children: [
-            // const Text("Summary", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             Padding(
               padding: EdgeInsets.all(16),
               child: Row(

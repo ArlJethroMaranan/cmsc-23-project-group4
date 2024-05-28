@@ -60,7 +60,12 @@ class _DonationListViewState extends State<DonationListView> {
 
   Widget donationDetails(donation, forPickup){
     return Scaffold(
-      appBar: AppBar(title: Text("Donation")),
+      appBar: AppBar(
+        title: Text("Donation"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
+      ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         padding: EdgeInsets.all(17),
         child: Column(

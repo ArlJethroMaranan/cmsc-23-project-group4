@@ -13,7 +13,10 @@ class _AdminHomePageState extends State<AdminHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Admin Home Page"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
