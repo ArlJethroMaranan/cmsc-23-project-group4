@@ -1,4 +1,5 @@
 import 'package:cmsc_23_proj/firebase_options.dart';
+import 'package:cmsc_23_proj/provider/provider.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/auth_main.dart';
 import 'package:cmsc_23_proj/screens/not_found.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
@@ -7,6 +8,7 @@ import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerPro
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +19,10 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: ((context) => DonationOrgListProvider())),
-        ChangeNotifierProvider(create: ((context) => DonationDriveOrgListProvider())),
-        ChangeNotifierProvider(create: ((context) => OrgProfileProvider()))
+        ChangeNotifierProvider(create: ((context) => DonationListProvider())),
+        ChangeNotifierProvider(create: ((context) => OrgsForApprovalListProvider())),
+        ChangeNotifierProvider(create: ((context) => OrganizationsListProvider())),
+        ChangeNotifierProvider(create: ((context) => DonorsListProvider())),
       ],
       child: const MyApp(),
     ),

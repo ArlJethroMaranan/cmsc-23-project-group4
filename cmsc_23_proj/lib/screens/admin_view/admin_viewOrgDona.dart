@@ -1,3 +1,5 @@
+import 'package:cmsc_23_proj/screens/admin_view/admin_ViewOrgDona_Donation.dart';
+import 'package:cmsc_23_proj/screens/admin_view/admin_ViewOrgDona_Organization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -9,51 +11,23 @@ class ViewOrgsDonaPage extends StatefulWidget {
 }
 
 class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
-  List<String> orgList = [
-    "Seventeen",
-    "EXO"
-  ];
-
-  List<String> donationList = [
-    "donation 1"
-  ];
-
-  Widget orgListView(){
-    return ListView.builder(
-      itemCount: orgList.length,
-      itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(orgList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
-          // onTap: ,
-        );
-      })
-    );
-  }
-
-  Widget donationListView(){
-    return ListView.builder(
-      itemCount: donationList.length,
-      itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(donationList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
-        );
-      })
-    );
-  }
+  // List<String> orgList = [
+  //   "Seventeen",
+  //   "EXO"
+  // ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("View All Organizations and Donations"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         margin: const EdgeInsets.all(18),
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -63,7 +37,7 @@ class _ViewOrgsDonaPageState extends State<ViewOrgsDonaPage> {
                   fontWeight: FontWeight.bold
                 ),
               ),
-              Expanded(child: orgListView())
+              Expanded(child: OrganizationListView())
             ],
           ),
         )

@@ -1,3 +1,4 @@
+import 'package:cmsc_23_proj/screens/admin_view/admin_orgApproval_orgListView.dart';
 import 'package:flutter/material.dart';
 
 class OrgApprovalPage extends StatefulWidget {
@@ -8,34 +9,20 @@ class OrgApprovalPage extends StatefulWidget {
 }
 
 class _OrgApprovalPageState extends State<OrgApprovalPage> {
-  List<String> orgList = [
-    "Going Rangers"
-  ];
-
-  Widget orgListView(){
-    return ListView.builder(
-      itemCount: orgList.length,
-      itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(orgList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
-          trailing: IconButton(
-            icon: Icon(Icons.check),
-            onPressed: (){},
-          ),
-          // onTap: ,
-        );
-      })
-    );
-  }
+  // List<String> orgList = [
+  //   "Going Rangers"
+  // ];
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Organizations for Approval"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         margin: const EdgeInsets.all(18),
         child: Center(
@@ -48,7 +35,7 @@ class _OrgApprovalPageState extends State<OrgApprovalPage> {
                   fontWeight: FontWeight.bold
                 ),
               ),
-              Expanded(child: orgListView())
+              Expanded(child: OrgForApprovalListView())
             ],
           ),
         )

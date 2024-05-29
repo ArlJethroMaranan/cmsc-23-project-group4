@@ -1,3 +1,4 @@
+import 'package:cmsc_23_proj/screens/admin_view/admin_viewDonors_donoListView.dart';
 import 'package:flutter/material.dart';
 
 class ViewDonorsPage extends StatefulWidget {
@@ -8,33 +9,18 @@ class ViewDonorsPage extends StatefulWidget {
 }
 
 class _ViewDonorsPageState extends State<ViewDonorsPage> {
-  List<String> donorList = [
-    "Jem"
-  ];
-
-  Widget donorListView(){
-    return ListView.builder(
-      itemCount: donorList.length,
-      itemBuilder: ((context, index) {
-        return ListTile(
-          title: Text(donorList[index]),
-          tileColor: Colors.blue,
-          titleTextStyle: TextStyle(color: Colors.white),
-          // onTap: ,
-        );
-      })
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("View All Donors"),
+        backgroundColor: const Color.fromARGB(255, 232, 130, 57),
+        foregroundColor: Colors.white,
       ),
+      backgroundColor: const Color.fromARGB(255, 229, 239, 95),
       body: Container(
         margin: const EdgeInsets.all(18),
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -44,7 +30,8 @@ class _ViewDonorsPageState extends State<ViewDonorsPage> {
                   fontWeight: FontWeight.bold
                 ),
               ),
-              Expanded(child: donorListView())
+              Expanded(
+                child: DonorsListView())
             ],
           ),
         )
