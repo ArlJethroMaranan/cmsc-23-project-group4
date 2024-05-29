@@ -1,5 +1,6 @@
 import 'package:cmsc_23_proj/screens/not_found.dart';
 import 'package:cmsc_23_proj/screens/users_view/donors_view/donors_donate.dart';
+import 'package:cmsc_23_proj/screens/users_view/donors_view/donors_home.dart';
 import 'package:cmsc_23_proj/screens/users_view/donors_view/donors_orgs.dart';
 import 'package:cmsc_23_proj/screens/users_view/donors_view/donors_profile.dart';
 import 'package:flutter/material.dart';
@@ -22,11 +23,13 @@ class _DonorsMainState extends State<DonorsMain> {
       ),
       onGenerateRoute: (settings) {
         if (settings.name == '/'){
+          return MaterialPageRoute(builder: (context) => const DonorHome());
+        } else if (settings.name == '/donors-org'){
           return MaterialPageRoute(builder: (context) => const DonorsOrgs());
-        } else if (settings.name == '/donors-donate'){
-          return MaterialPageRoute(builder: (context) => const DonorsDonate());
         } else if (settings.name == '/donors-profile'){
           return MaterialPageRoute(builder: (context) => const DonorsProfile());
+        } else if (settings.name == '/donors-donate'){
+          return MaterialPageRoute(builder: (context) => const DonorsDonate(orgID: "",));
         } else {
           return MaterialPageRoute(builder: (context) => const NotFound());
         }

@@ -2,6 +2,7 @@ import 'package:cmsc_23_proj/firebase_options.dart';
 import 'package:cmsc_23_proj/provider/provider.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/auth_main.dart';
 import 'package:cmsc_23_proj/screens/not_found.dart';
+import 'package:cmsc_23_proj/screens/users_view/donors_view/donorsProvider/providerOrg.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerOrg.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerProfileOrg.dart';
@@ -22,7 +23,11 @@ void main() async {
         ChangeNotifierProvider(create: ((context) => DonationListProvider())),
         ChangeNotifierProvider(create: ((context) => OrgsForApprovalListProvider())),
         ChangeNotifierProvider(create: ((context) => OrganizationsListProvider())),
-        ChangeNotifierProvider(create: ((context) => DonorsListProvider())),
+        ChangeNotifierProvider(create: ((context) => DonorsListProvider())), 
+        ChangeNotifierProvider(create: ((context) => DonationDriveOrgListProvider())), // list ng drives for that org
+        ChangeNotifierProvider(create: ((context) => OrgsListProvider())), // list ng orgs na makikita ng donator
+        ChangeNotifierProvider(create: ((context) => DonationOrgListProvider())), // list ng donations associated sa org
+        ChangeNotifierProvider(create: ((context) => OrgProfileProvider())), // profile ng org
       ],
       child: const MyApp(),
     ),
