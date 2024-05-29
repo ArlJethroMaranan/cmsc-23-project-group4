@@ -9,10 +9,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:cmsc_23_proj/provider/authProvider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
@@ -20,9 +21,14 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: ((context) => DonationListProvider())),
-        ChangeNotifierProvider(create: ((context) => OrgsForApprovalListProvider())),
-        ChangeNotifierProvider(create: ((context) => OrganizationsListProvider())),
+        ChangeNotifierProvider(
+            create: ((context) => OrgsForApprovalListProvider())),
+        ChangeNotifierProvider(
+            create: ((context) => OrganizationsListProvider())),
         ChangeNotifierProvider(create: ((context) => DonorsListProvider())),
+        ChangeNotifierProvider(
+            create: ((context) => DonationDriveOrgListProvider())),
+        ChangeNotifierProvider(create: ((context) => AuthProvider())),
       ],
       child: const MyApp(),
     ),
@@ -39,15 +45,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
         colorScheme: ThemeData.dark().colorScheme.copyWith(
-          background: Colors.grey[900],
-        ),
+              background: Colors.grey[900],
+            ),
         scaffoldBackgroundColor: Colors.grey[900],
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.grey[800],
         ),
       ),
       onGenerateRoute: (settings) {
-        if (settings.name == '/'){
+        if (settings.name == '/') {
           return MaterialPageRoute(builder: (context) => const AuthMain());
         } else {
           return MaterialPageRoute(builder: (context) => const NotFound());
