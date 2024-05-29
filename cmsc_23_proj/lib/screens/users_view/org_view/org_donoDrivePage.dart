@@ -27,72 +27,88 @@ class _DonoDriveDetailsState extends State<DonoDriveDetails> {
         foregroundColor: Colors.white, // Text and icon color
       ),
       backgroundColor: const Color.fromARGB(255, 229, 239, 95),
-      body: Padding(
-              padding: const EdgeInsets.all(16),
-              child: 
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    Center(
-                      child: Text(donationDriveOrg.name!, style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
-                    ),
-
-                    const SizedBox(height: 15,),
-                    
-                    Text(donationDriveOrg.description!, style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
-
-                    const SizedBox(height: 15,),
-
-                    Center(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 214, 126, 62),
-                          borderRadius: BorderRadius.circular(50), 
-                        ),
-                        clipBehavior: Clip.antiAlias, // clip overflow of image of the container
-                        child: Image.asset(
-                                'assets/donation2.png',
-                              ),
+      body: SingleChildScrollView(
+        child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: 
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+        
+                      Center(
+                        child: Text(donationDriveOrg.name!, style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
                       ),
-                    ),
-
-                    const SizedBox(height: 15,),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () async {
-                                await context.read<DonationDriveOrgListProvider>().deleteDrive(donationDriveOrg.id!);
-                                print("deleted");
-                                Navigator.pop(context);
+        
+                      const SizedBox(height: 15,),
+                      
+                      Text(donationDriveOrg.description!, style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+        
+                      const SizedBox(height: 15,),
+        
+                      Center(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 214, 126, 62),
+                            borderRadius: BorderRadius.circular(50), 
+                          ),
+                          clipBehavior: Clip.antiAlias, // clip overflow of image of the container
+                          child: Image.asset(
+                                  'assets/donation2.png',
+                                ),
+                        ),
+                      ),
+        
+                      const SizedBox(height: 15,),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Photo of the items to donate"),
+                          Container(
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 214, 126, 62),
+                            borderRadius: BorderRadius.circular(50), 
+                          ),
+                          clipBehavior: Clip.antiAlias, // clip overflow of image of the container
+                          child: Image.network(donationDriveOrg.photo!)
+                        ),
                           
-                              }
-                              , child: const Text('Delete Drive')
-                            ),
-                          ],
-                        ),
-
-                        const SizedBox(width: 15,),
-
-                        Column(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => EditDonationDrive(drive : donationDriveOrg))); // pass the donationDriveOrg to edit donation since we need the id for editing
-                              }, 
-                              child: const Text('Edit Drive'),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-            ),
+                        ]
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () async {
+                                  await context.read<DonationDriveOrgListProvider>().deleteDrive(donationDriveOrg.id!);
+                                  print("deleted");
+                                  Navigator.pop(context);
+                            
+                                }
+                                , child: const Text('Delete Drive')
+                              ),
+                            ],
+                          ),
+        
+                          const SizedBox(width: 15,),
+        
+                          Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => EditDonationDrive(drive : donationDriveOrg))); // pass the donationDriveOrg to edit donation since we need the id for editing
+                                }, 
+                                child: const Text('Edit Drive'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+              ),
+      ),
         );
   }
 }

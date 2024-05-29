@@ -23,6 +23,7 @@ void main() async {
         ChangeNotifierProvider(create: ((context) => OrgsForApprovalListProvider())),
         ChangeNotifierProvider(create: ((context) => OrganizationsListProvider())),
         ChangeNotifierProvider(create: ((context) => DonorsListProvider())),
+        ChangeNotifierProvider(create: ((context) => DonationDriveOrgListProvider())),
       ],
       child: const MyApp(),
     ),
