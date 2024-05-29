@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class UserSignUp extends StatefulWidget {
   const UserSignUp({super.key});
@@ -164,7 +165,7 @@ class _UserSignUpState extends State<UserSignUp> {
                           });
                         },
                       ),
-                      const Text("Are you signing up as an organization?")
+                      const Flexible(child: Text("Are you signing up as an organization?")),
                     ],
                   )
                 ),

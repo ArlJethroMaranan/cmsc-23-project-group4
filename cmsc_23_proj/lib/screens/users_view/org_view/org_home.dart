@@ -19,30 +19,21 @@ class _OrgHomeState extends State<OrgHome> {
         backgroundColor: Color.fromARGB(255, 232, 130, 57), // Background color
         foregroundColor: Colors.white, // Text and icon color
       ),
-      body: Stack(
-        fit: StackFit.expand,
+      body: Column(
         children: [
-          // Background
-           Positioned(
-            top: -15, 
-            left: 0, 
-            child: Image.asset(
+           Image.asset(
               "assets/donation2.png",
               width: 400, 
-              height: 400, 
+              height: 250, 
               fit: BoxFit.cover,
             ),
-          ),
-          // Container 
-          Positioned(
-            top: 290, 
-            left: -3, 
+          Flexible(
             child: Container(
-              width: 400, 
-              height: 450, 
-              decoration: BoxDecoration(
+              // width: 400, 
+              height: 500, 
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 229, 239, 95),
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,7 +79,9 @@ class _OrgHomeState extends State<OrgHome> {
                         width: 300,
                         height: 70,
                         child: FloatingActionButton.extended(
-                          onPressed: () {},
+                          onPressed: () async {
+                            await Navigator.pushNamed(context, '/driveOrg');
+                          },
                           backgroundColor: Color.fromARGB(255, 232, 130, 57),
                           label: const Text('Donation Drives'),
                           icon: const Icon(Icons.add_to_drive_outlined),

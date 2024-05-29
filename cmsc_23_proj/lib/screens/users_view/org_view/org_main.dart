@@ -1,4 +1,9 @@
 import 'package:cmsc_23_proj/screens/not_found.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/EditDonationDrive.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/donoDriveAdd.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/orgModel/driveOrgModel.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoDrive.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoDrivePage.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_donoList.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_home.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_profile.dart';
@@ -29,6 +34,14 @@ class _OrgMainState extends State<OrgMain> {
         } else if(settings.name == '/profileOrg'){ // route for friends page which has a map parameter that will be from formpage
           //var args = setting.arguments as Map<String,String>? ?? {};
           return MaterialPageRoute(builder: (context) => const ProfileOrg());
+        } else if(settings.name == '/driveOrg') {
+          return MaterialPageRoute(builder: (context) => const DonationDrive());
+        } else if(settings.name == '/driveOrgDet') {
+          return MaterialPageRoute(builder: (context) => const DonoDriveDetails());
+        } else if(settings.name == '/driveOrgAdd') {
+          return MaterialPageRoute(builder: (context) => const AddDonationDrive()); 
+        } else if(settings.name == '/driveOrgEdit') {
+          return MaterialPageRoute(builder: (context) => EditDonationDrive(drive: DonationDriveOrg(name:"",description:"",photo:"", orgID: "", id: ""),));
         } else {
           return MaterialPageRoute(builder: (context) => const NotFound());
         }
