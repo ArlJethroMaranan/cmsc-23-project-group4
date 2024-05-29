@@ -152,6 +152,9 @@ class _EditDonationDriveState extends State<EditDonationDrive> {
               ElevatedButton( // to reset all
                 onPressed: () {
                   formKey.currentState!.reset(); //reset each from fields in each class
+                  nameController.clear();
+                  descriptionController.clear();
+                  photoController.clear();
                 },
                 child: const Text('Reset'),
               ),

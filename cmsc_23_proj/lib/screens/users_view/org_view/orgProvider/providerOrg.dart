@@ -28,4 +28,12 @@ class DonationOrgListProvider with ChangeNotifier {
     await firebaseService.editStatus(index,data);
     notifyListeners();
   }
+
+  void addDonation(DonationOrg item) async {
+    String message = await firebaseService.addDonation(item.toJson(item));
+    print(message);
+    notifyListeners();
+  }
+
+
 }
