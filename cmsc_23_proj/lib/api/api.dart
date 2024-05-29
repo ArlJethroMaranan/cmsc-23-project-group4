@@ -6,7 +6,6 @@ class FirebaseDonationAPI {
   Stream<QuerySnapshot> getAllDonation() {
     return db.collection("donations").snapshots();
   }
-
 }
 
 class FirebaseOrganizationsAPI {
@@ -16,15 +15,18 @@ class FirebaseOrganizationsAPI {
     return db.collection("organizations").snapshots();
   }
 
-  Future<String> addOrganization(Map<String, dynamic> organization) async {
-    try {
-      await db.collection("organizations").add(organization); 
-      return "Organization approved!"; 
-    } on FirebaseException catch (e) {
-      return "Failed with error '${e.code}: ${e.message}"; 
-    } 
+  Future<DocumentSnapshot> getOrganizationById(String id) async {
+    return await db.collection("organizations").doc(id).get();
   }
 
+  Future<String> addOrganization(Map<String, dynamic> organization) async {
+    try {
+      await db.collection("organizations").add(organization);
+      return "Organization approved!";
+    } on FirebaseException catch (e) {
+      return "Failed with error '${e.code}: ${e.message}";
+    }
+  }
 }
 
 class FirebaseOrgsForApprovalAPI {
@@ -36,23 +38,22 @@ class FirebaseOrgsForApprovalAPI {
 
   Future<String> addOrgForApproval(Map<String, dynamic> organization) async {
     try {
-      await db.collection("organizationsForApproval").add(organization); 
-      return "Organization sign-up successful!"; 
+      await db.collection("organizationsForApproval").add(organization);
+      return "Organization sign-up successful!";
     } on FirebaseException catch (e) {
-      return "Failed with error '${e.code}: ${e.message}"; 
-    } 
+      return "Failed with error '${e.code}: ${e.message}";
+    }
   }
 
   Future<String> deleteOrgForApproval(String id) async {
-    try { 
+    try {
       await db.collection("organizationsForApproval").doc(id).delete();
 
       return "Organization For Approval successfully deleted!";
     } on FirebaseException catch (e) {
-      return "Failed with error '${e.code}: ${e.message}"; 
+      return "Failed with error '${e.code}: ${e.message}";
     }
   }
-
 }
 
 class FirebaseDonorsAPI {
@@ -62,13 +63,16 @@ class FirebaseDonorsAPI {
     return db.collection("donors").snapshots();
   }
 
-  Future<String> addDonor(Map<String, dynamic> donor) async {
-    try {
-      await db.collection("donors").add(donor); 
-      return "Donor sign-up successful!"; 
-    } on FirebaseException catch (e) {
-      return "Failed with error '${e.code}: ${e.message}"; 
-    } 
+  Future<DocumentSnapshot> getDonorById(String id) async {
+    return await db.collection("donors").doc(id).get();
   }
 
+  Future<String> addDonor(Map<String, dynamic> donor) async {
+    try {
+      await db.collection("donors").add(donor);
+      return "Donor sign-up successful!";
+    } on FirebaseException catch (e) {
+      return "Failed with error '${e.code}: ${e.message}";
+    }
+  }
 }
