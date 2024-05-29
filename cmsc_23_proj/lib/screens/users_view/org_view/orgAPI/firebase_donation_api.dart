@@ -21,4 +21,14 @@ class FirebaseDonationOrgAPI {
     }
   }
 
+  Future<String> addDonation(Map<String, dynamic> donationOrg) async {
+    try{ 
+      await db.collection("donations").add(donationOrg);
+
+      return "Successfully added donation!";
+    } on FirebaseException catch (e) {
+      return "Failed with error '${e.code}: ${e.message}";
+    }
+  }
+
 }
