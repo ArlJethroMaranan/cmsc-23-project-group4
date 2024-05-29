@@ -1,6 +1,7 @@
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgModel/driveOrgModel.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/textfield.dart';
+import 'package:cmsc_23_proj/screens/users_view/org_view/donoDriveImageUpload.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
     summaryText =
         'Name: ${nameController.text}\n'
         'Description: ${descriptionController.text}\n'
-        'Photo: ${photoController.text}\n';
+        'Photo: ${photoURL}\n';
 
     if (!formKey.currentState!.validate() || summaryText.contains('null')) {
       // if invalid
@@ -35,7 +36,8 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
               DonationDriveOrg temp = DonationDriveOrg(
                 name: nameController.text,
                 description: descriptionController.text,
-                photo: photoController.text,
+                photo: photoURL,
+                // photoController.text,
                 //orgID: context.watch<>().userID(),
                 orgID: 'En3NVkFvaL905dJ8ii8c'
               );
@@ -52,8 +54,9 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
   //initialize some objects for storing values from classes
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController photoController = TextEditingController();
+  // TextEditingController photoController = TextEditingController();
 
+  String? photoURL;
   String summaryText = '';
   bool showSummary = false;
   
@@ -92,13 +95,15 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
                 controller: descriptionController,
                 
               ), //text field for desc
-      
-              TextFieldState(
-                hintText: "Enter the photo for proof",
-                label: "Photo",
-                controller: photoController,
+
+              ImageUpload((value) => photoURL=value),
+
+              // TextFieldState(
+              //   hintText: "Enter the photo for proof",
+              //   label: "Photo",
+              //   controller: photoController,
                 
-              ), //text field for photo
+              // ), //text field for photo
           
               ElevatedButton( //click button to submit form
                 onPressed: () {
@@ -123,7 +128,9 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
               //       ),
               //     ],
               //   )
-              if (!showSummary && (nameController.text == "" || descriptionController.text == "" || photoController.text == "")) // else print invalid inputs
+              if (!showSummary && (nameController.text == "" || descriptionController.text == "" || photoURL == ''
+              // || photoController.text == ""
+              )) // else print invalid inputs
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
