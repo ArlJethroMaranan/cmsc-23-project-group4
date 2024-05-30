@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DonationOrg {
+class DonationModel {
   // initialize data fields
   String? address1;
   String? address2;
@@ -15,7 +15,7 @@ class DonationOrg {
   String? orgID;
   String? driveID;
 
-  DonationOrg({
+  DonationModel({
     this.address1,
     this.address2,
     this.contactNum,
@@ -30,8 +30,8 @@ class DonationOrg {
   });
 
   // Factory constructor to instantiate object from json format
-  factory DonationOrg.fromJson(Map<String, dynamic> json) {
-    return DonationOrg(
+  factory DonationModel.fromJson(Map<String, dynamic> json) {
+    return DonationModel(
       address1: json['address1'],
       address2: json['address2'],
       contactNum: json['contactNum'],
@@ -46,14 +46,14 @@ class DonationOrg {
     );
   }
 
-  static List<DonationOrg> fromJsonArray(String jsonData) {
+  static List<DonationModel> fromJsonArray(String jsonData) {
     final Iterable<dynamic> data = jsonDecode(jsonData);
     return data
-        .map<DonationOrg>((dynamic d) => DonationOrg.fromJson(d))
+        .map<DonationModel>((dynamic d) => DonationModel.fromJson(d))
         .toList();
   }
 
-  Map<String, dynamic> toJson(DonationOrg donationOrg) {
+  Map<String, dynamic> toJson(DonationModel donationOrg) {
     return {
       'address1': donationOrg.address1,
       'address2': donationOrg.address2,

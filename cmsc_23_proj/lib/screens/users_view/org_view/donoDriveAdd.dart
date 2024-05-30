@@ -1,5 +1,5 @@
-import 'package:cmsc_23_proj/screens/users_view/org_view/orgModel/driveOrgModel.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
+import 'package:cmsc_23_proj/models/donation_drive_model.dart';
+import 'package:cmsc_23_proj/provider/donation_drive_provider.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/textfield.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/donoDriveImageUpload.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +32,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
 
       formKey.currentState!.save();
       {
-        DonationDriveOrg temp = DonationDriveOrg(
+        DonationDriveModel temp = DonationDriveModel(
             name: nameController.text,
             description: descriptionController.text,
             photo: photoURL,

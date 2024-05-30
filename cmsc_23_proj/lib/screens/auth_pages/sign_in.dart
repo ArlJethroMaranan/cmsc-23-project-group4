@@ -1,4 +1,4 @@
-import 'package:cmsc_23_proj/provider/authProvider.dart';
+import 'package:cmsc_23_proj/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
