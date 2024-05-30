@@ -13,7 +13,7 @@ class DonationOrg {
   int? weight;
   String status;
   String? orgID;
-  
+  String? driveID;
 
   DonationOrg({
     this.address1,
@@ -26,6 +26,7 @@ class DonationOrg {
     this.weight,
     this.status = "Pending",
     this.orgID,
+    this.driveID,
   });
 
   // Factory constructor to instantiate object from json format
@@ -40,13 +41,16 @@ class DonationOrg {
       schedule: json['schedule'],
       weight: json['weight'],
       orgID: json['orgID'],
-      status: json['status'] ?? 'Pending', 
+      driveID: json['driveID'],
+      status: json['status'] ?? 'Pending',
     );
   }
 
   static List<DonationOrg> fromJsonArray(String jsonData) {
     final Iterable<dynamic> data = jsonDecode(jsonData);
-    return data.map<DonationOrg>((dynamic d) => DonationOrg.fromJson(d)).toList();
+    return data
+        .map<DonationOrg>((dynamic d) => DonationOrg.fromJson(d))
+        .toList();
   }
 
   Map<String, dynamic> toJson(DonationOrg donationOrg) {
@@ -61,6 +65,7 @@ class DonationOrg {
       'weight': donationOrg.weight,
       'status': donationOrg.status,
       'orgID': donationOrg.orgID,
+      'driveID': donationOrg.driveID,
     };
   }
 }
