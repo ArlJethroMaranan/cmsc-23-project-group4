@@ -1,4 +1,5 @@
 import 'package:cmsc_23_proj/provider/auth_provider.dart';
+import 'package:cmsc_23_proj/provider/org_profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -95,6 +96,8 @@ class _UserSignInState extends State<UserSignIn> {
                     if (currentUser["type"] == "donor") {
                       Navigator.pushNamed(context, '/donors-main');
                     } else if (currentUser["type"] == "organization") {
+                      Map<String, dynamic> currentUser = context.read<AuthProvider>().currentUser; // set current user to the logged in org
+                      context.read<OrgProfileProvider>().changeProfileOrgById(currentUser['id']); // pass the id of current org to orgMain
                       Navigator.pushNamed(context, '/orgs-main');
                     } else if (currentUser["type"] == "admin") {
                       Navigator.pushNamed(context, '/admin-main');

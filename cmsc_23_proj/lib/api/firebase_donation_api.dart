@@ -21,6 +21,18 @@ class FirebaseDonationOrgAPI {
     }
   }
 
+  Future<String> editDonationType(String? id, DonationModel data) async {
+    try {
+      await db.collection("donations").doc(id).update({
+        // update status
+        'donationType': data.donationType,
+      });
+      return "Successfully updated todo!";
+    } on FirebaseException catch (e) {
+      return "Failed with error '${e.code}: ${e.message}";
+    }
+  }
+
   Future<String> addDonation(Map<String, dynamic> donationOrg) async {
     try {
       await db.collection("donations").add(donationOrg);

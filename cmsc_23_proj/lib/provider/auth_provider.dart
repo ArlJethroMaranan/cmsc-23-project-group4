@@ -9,6 +9,18 @@ class AuthProvider with ChangeNotifier {
       "password": "12345678"
     },
     {
+      "id": "gG4lDpcaqX5Z8jx1MGYP",
+      "email": "GoingRangers@gmail.com",
+      "type": "organization",
+      "password": "12345678"
+    },
+    {
+      "id": "9RJXh3b7nlqLtNcbBox8",
+      "email": "GoingCompany@gmail.com",
+      "type": "organization",
+      "password": "12345678"
+    },
+    {
       "id": "4h4r7ZnZPuFnnDEN39Dm",
       "email": "jem@gmail.com",
       "type": "donor",

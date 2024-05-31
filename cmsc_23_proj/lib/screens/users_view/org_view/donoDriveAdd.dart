@@ -13,7 +13,7 @@ class AddDonationDrive extends StatefulWidget {
 }
 
 class _AddDonationDriveState extends State<AddDonationDrive> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void validateAnswers() {
     //contains summary and checker if formkey is valid
@@ -21,7 +21,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
         'Description: ${descriptionController.text}\n'
         'Photo: ${photoURL}\n';
 
-    if (!formKey.currentState!.validate() || summaryText.contains('null')) {
+    if (!_formKey.currentState!.validate() || summaryText.contains('null')) {
       // if invalid
       showSummary = false;
     } else {
@@ -30,7 +30,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
         showSummary = true;
       });
 
-      formKey.currentState!.save();
+      _formKey.currentState!.save();
       {
         DonationDriveModel temp = DonationDriveModel(
             name: nameController.text,
@@ -67,7 +67,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: formKey,
+          key: _formKey,
           child: Center(
             child: Column(
               children: [
@@ -144,7 +144,7 @@ class _AddDonationDriveState extends State<AddDonationDrive> {
                 ElevatedButton(
                   // to reset all
                   onPressed: () {
-                    formKey.currentState!
+                    _formKey.currentState!
                         .reset(); //reset each from fields in each class
                     nameController.clear();
                     descriptionController.clear();

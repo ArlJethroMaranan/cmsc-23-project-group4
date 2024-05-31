@@ -23,7 +23,7 @@ class OrgModel {
       name: json['name'],
       orgID: json['orgID'],
       photo: json['photo'],
-      status: json['status'],
+      status: json['status'] ?? 'Open',
     );
   }
 
