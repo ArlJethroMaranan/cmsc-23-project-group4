@@ -2,15 +2,15 @@ import 'package:cmsc_23_proj/firebase_options.dart';
 import 'package:cmsc_23_proj/provider/provider.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/auth_main.dart';
 import 'package:cmsc_23_proj/screens/not_found.dart';
-import 'package:cmsc_23_proj/screens/users_view/donors_view/donorsProvider/providerOrg.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerOrg.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerProfileOrg.dart';
+import 'package:cmsc_23_proj/provider/org_list_provider.dart';
+import 'package:cmsc_23_proj/provider/donation_drive_provider.dart';
+import 'package:cmsc_23_proj/provider/donation_list_provider.dart';
+import 'package:cmsc_23_proj/provider/org_profile_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:cmsc_23_proj/provider/authProvider.dart';
+import 'package:cmsc_23_proj/provider/auth_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
