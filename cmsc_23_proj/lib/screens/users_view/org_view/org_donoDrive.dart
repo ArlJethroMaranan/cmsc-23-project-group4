@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/drawer.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgModel/driveOrgModel.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/orgProvider/providerDriveOrg.dart';
-import 'package:cmsc_23_proj/screens/users_view/org_view/donoDriveImageUpload.dart';
+import 'package:cmsc_23_proj/utils/imageUpload.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

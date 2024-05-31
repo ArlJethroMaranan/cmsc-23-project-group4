@@ -1,5 +1,12 @@
+import 'dart:typed_data';
+
+import 'package:cmsc_23_proj/models/models.dart';
+import 'package:cmsc_23_proj/provider/provider.dart';
+import 'package:cmsc_23_proj/screens/admin_view/admin_orgApproval_orgListView.dart';
+import 'package:cmsc_23_proj/utils/imageUpload.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 class UserSignUp extends StatefulWidget {
   const UserSignUp({super.key});
@@ -16,7 +23,8 @@ class _UserSignUpState extends State<UserSignUp> {
   final TextEditingController addr2Controller = TextEditingController();
   final TextEditingController numController = TextEditingController();
   final TextEditingController orgNameController = TextEditingController();
-  final TextEditingController proofController = TextEditingController();
+  final TextEditingController aboutController = TextEditingController();
+  String? proofPhotoURL;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -31,7 +39,7 @@ class _UserSignUpState extends State<UserSignUp> {
     addr2Controller.dispose();
     numController.dispose();
     orgNameController.dispose();
-    proofController.dispose();
+    aboutController.dispose();
     super.dispose();
   }
 
@@ -190,18 +198,41 @@ class _UserSignUpState extends State<UserSignUp> {
                   Container(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) return "Proof of legitimacy required";
-                        return null;
-                      },
-                      controller: proofController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        contentPadding: EdgeInsets.all(10),
-                        labelText: "Proof of Legitimacy",
+                        validator: (value) {
+                          if (value == null || value.isEmpty) return "About organization required";
+                          return null;
+                        },
+                        controller: aboutController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.all(10),
+                          labelText: "About Organization",
+                        ),
                       ),
-                    ),
                   ),
+                  const Padding(padding: EdgeInsets.only(top: 10)),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Proof of Legitimacy"),
+                        ImageUpload((value) => proofPhotoURL=value)
+                      ],
+                    )
+                  ),
+                  // TextFormField(
+                    //   validator: (value) {
+                    //     if (value == null || value.isEmpty) return "Proof of legitimacy required";
+                    //     return null;
+                    //   },
+                    //   controller: proofController,
+                    //   decoration: const InputDecoration(
+                    //     border: OutlineInputBorder(),
+                    //     contentPadding: EdgeInsets.all(10),
+                    //     labelText: "Proof of Legitimacy",
+                    //   ),
+                    // ),
                 ],
                 const Padding(padding: EdgeInsets.only(top: 10)),
                 OutlinedButton(
@@ -216,7 +247,8 @@ class _UserSignUpState extends State<UserSignUp> {
                       final addr2Input = addr2Controller.text;
                       final numInput = numController.text;
                       final orgNameInput = orgNameController.text;
-                      final proofInput = proofController.text;
+                      final aboutInput = aboutController.text;
+                      final proofInput = proofPhotoURL;
 
                       if (isOrg) {
                         Navigator.pushNamed(context, '/');
@@ -233,7 +265,25 @@ class _UserSignUpState extends State<UserSignUp> {
                       print(isOrg);
                       if (isOrg) {
                         print(orgNameInput);
+                        print(aboutInput);
                         print(proofInput);
+
+                        OrgForApproval temp = OrgForApproval(
+                          name: orgNameInput, 
+                          about: aboutInput, 
+                          proof: proofInput!
+                        );
+
+                        context.read<OrgsForApprovalListProvider>().addOrgForApproval(temp);
+                      }else {
+                        Donor temp = Donor(
+                          name: nameInput, 
+                          username: usernameInput, 
+                          address1: addr1Input, 
+                          contactNum: numInput
+                        );
+
+                        context.read<DonorsListProvider>().addDonor(temp);
                       }
                     }
                   },
