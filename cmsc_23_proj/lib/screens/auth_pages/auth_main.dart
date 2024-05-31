@@ -1,3 +1,5 @@
+import 'package:cmsc_23_proj/provider/auth_provider.dart';
+import 'package:cmsc_23_proj/provider/org_profile_provider.dart';
 import 'package:cmsc_23_proj/screens/admin_view/admin_main.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/sign_in.dart';
 import 'package:cmsc_23_proj/screens/auth_pages/sign_up/sign_up_main.dart';
@@ -6,6 +8,7 @@ import 'package:cmsc_23_proj/screens/not_found.dart';
 import 'package:cmsc_23_proj/screens/users_view/donors_view/donors_main.dart';
 import 'package:cmsc_23_proj/screens/users_view/org_view/org_main.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AuthMain extends StatefulWidget {
   const AuthMain({super.key});
