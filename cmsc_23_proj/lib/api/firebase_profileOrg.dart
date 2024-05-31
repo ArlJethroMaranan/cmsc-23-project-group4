@@ -6,10 +6,10 @@ import 'package:cmsc_23_proj/models/org_profile_model.dart';
 class FirebaseProfileOrgAPI {
   static final FirebaseFirestore db = FirebaseFirestore.instance;
 
-  Stream<QuerySnapshot> getProfileOrg() {
+  Stream<QuerySnapshot> getProfileOrg(String id) {
     return db
         .collection("organizations")
-        .where("orgID", isEqualTo: "En3NVkFvaL905dJ8ii8c")
+        .where("orgID", isEqualTo: id)
         .snapshots();
   }
 

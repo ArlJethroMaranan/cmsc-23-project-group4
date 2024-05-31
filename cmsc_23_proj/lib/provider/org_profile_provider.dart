@@ -15,14 +15,12 @@ class OrgProfileProvider with ChangeNotifier {
 
   OrgProfileProvider() {
     firebaseService = FirebaseProfileOrgAPI();
-    fetchProfileOrg();
   }
 
   Stream<QuerySnapshot> get profileOrg => _profileOrgStream;
 
-  fetchProfileOrg() {
-    // to get the data from database
-    _profileOrgStream = firebaseService.getProfileOrg();
+  changeProfileOrgById(String id) { // new fetch that gets the org with the logged in id
+    _profileOrgStream = firebaseService.getProfileOrg(id);
     notifyListeners();
   }
 
